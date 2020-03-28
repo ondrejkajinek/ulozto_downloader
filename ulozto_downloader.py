@@ -65,7 +65,7 @@ def parse_page(url):
         raise RuntimeError("File was deleted from Uloz.to")
 
     # Parse filename only to the first | (Uloz.to sometimes add titles like "name | on-line video | Ulož.to" and so on)
-    filename = parse_single(r.text, r'<title>([^\|]*)\s+\|.*</title>')
+    filename = parse_single(r.text, r'<title>([^\|]*)\s+\|.*</title>').replace("/", "-")
 
     # Some files may be download without CAPTCHA, there is special URL on the parsed page:
     # <a ... href="/slowDownload/E7jJsmR2ix73">...</a>
